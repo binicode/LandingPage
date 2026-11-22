@@ -41,13 +41,17 @@ scripts/
 
 ## How the layout scales
 
-Every size inside the card uses container-query units, so the proportions measured
-from the reference hold at any width:
+The page is full-bleed: the header bar spans the top of the window and the tile
+grid fills the rest of the viewport edge to edge, with no outer frame.
 
-- `.profile` is the card container: `100cqi` = card width (1086px in the reference).
-- `.tile` is the tile container: `100cqi` = tile width (350px in the reference; tiles are 350 × 357).
-
-The grid shows 3 columns, then 2 columns when the card is under 640px wide, then 1 column under 420px.
+- **Columns:** 3 × 2 on landscape screens, 2 × 3 on portrait or narrow screens
+  (under 640px wide, or aspect ratio 5:4 or taller), and 1 column on phones (under 560px).
+- **Row height:** fills the space under the header, clamped between 0.75× and
+  1.02× the tile width so tiles never get too squat or too tall.
+- **Tile contents:** sized in `cqmin` (the tile's smaller side), so the proportions
+  measured from the reference (350px tile) hold at any tile size.
+- **Tokens:** `--bar-h` (header height) and `--gutter` (gap between tiles) at the
+  top of `styles.css`. Set `--gutter: 0` for seamless tiles.
 
 ## Photos
 
