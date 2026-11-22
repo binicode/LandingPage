@@ -90,3 +90,12 @@ attributes on its `<img>` and the widths in its `srcset`s in `index.html`.
   and an absolute `og:image` to `index.html`, and add a `sitemap.xml` (referenced from `robots.txt`).
 - **Handle:** `bridge.technologies` in the header bar is a stand-in for the reference's
   social handle. Replace it with the real one.
+
+## Screenshots
+
+- `screenshots/upwork/`: 2000 × 1500 (4:3) JPEG presentation images for an Upwork
+  portfolio. Use `01-cover-responsive.jpg` as the project cover, followed by the
+  desktop, tablet and mobile images. All are well under Upwork's 10 MB limit and
+  stay sharp at its 1000 × 750 display size.
+- `screenshots/raw/`: unframed high-resolution captures (desktop 1440 × 900 @2x,
+  tablet 820 × 1180 and 1180 × 820 @2x, mobile 390 × 844 and full page @3x).
