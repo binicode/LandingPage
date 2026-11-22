@@ -261,6 +261,19 @@ em {
   object-fit: cover;
 }
 
+/* Crop focus for each provided photo (the files themselves are uncropped) */
+.tile__img--digital {
+  object-position: 35% 50%;   /* centre the domed ring building */
+}
+
+.tile__img--lifestyle {
+  object-position: 50% 62%;   /* laptop, hand and jebena */
+}
+
+.tile__img--nature {
+  object-position: 50% 58%;   /* bridge, glass dome and stream */
+}
+
 /* Tiny monospaced caption used across tiles */
 .label {
   font-family: var(--font-mono);
