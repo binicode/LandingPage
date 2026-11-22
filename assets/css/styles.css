@@ -369,7 +369,7 @@ em {
 .tile--sun {
   background:
     radial-gradient(60% 45% at 88% 12%, rgb(219 94 60 / 0.35), transparent 70%),
-    linear-gradient(180deg, #44110f 0%, #6a2219 32%, #9a3c28 62%, #c9603f 86%, #d26c4b 100%);
+    linear-gradient(180deg, #44110f 0%, #6a2219 32%, #923826 60%, #b5513a 84%, #c25d42 100%);
 }
 
 .sun {
@@ -430,6 +430,11 @@ em {
   margin: 0;
   text-transform: none;
   letter-spacing: 0.08em;
+  /* thin merlot halo keeps the reference's yellow-on-orange label legible (WCAG 1.4.3) */
+  text-shadow:
+    0 0 1px rgb(42 9 9 / 0.9),
+    0 0 3px rgb(42 9 9 / 0.75),
+    0 0 7px rgb(42 9 9 / 0.45);
 }
 
 /* ---------- 4 · Workspace pill ---------- */
