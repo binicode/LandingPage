@@ -1,0 +1,12 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/*
+!.vscode/extensions.json
+.idea/
+
+# Dependencies & local tooling output
+node_modules/
+*.log
+.cache/
