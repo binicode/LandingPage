@@ -264,22 +264,26 @@ em {
 
 /* Crop focus for each provided photo (the files themselves are uncropped) */
 .tile__img--digital {
-  object-position: 55% 50%;   /* centre the domed ring building */
+  object-position: 55% 60%;   /* domed ring building and network dome */
 }
 
-/* Photographer credit for the Addis Ababa photo (its watermark is cropped out) */
+/* Photographer credit for the Addis Ababa photo */
 .photo-credit {
   position: absolute;
-  top: 5.6cqmin;
-  right: 5.6cqmin;
+  top: 4.6cqmin;
+  right: 4.6cqmin;
   z-index: 1;
   font-family: var(--font-mono);
   font-weight: 700;
   font-size: max(8px, 2.3cqmin);
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgb(251 243 236 / 0.9);
-  text-shadow: 0 1px 6px rgb(10 6 30 / 0.7);
+  padding: 1.1cqmin 2.6cqmin;
+  border-radius: 999px;
+  background: rgb(42 9 9 / 0.78);
+  color: var(--cream);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
 }
 
 .tile__img--lifestyle {
