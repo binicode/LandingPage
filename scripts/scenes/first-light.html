@@ -1,0 +1,106 @@
+<!doctype html>
+<!-- Grayscale source scene for assets/images/first-light.*  (rendered 1000x1000, then graded by scripts/grade_images.py) -->
+<html><head><meta charset="utf-8"><style>
+html,body{margin:0;width:1000px;height:1000px;background:#000;overflow:hidden}
+svg{display:block}
+</style></head><body>
+<svg width="1000" height="1000" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#cbcbcb"/>
+      <stop offset=".45" stop-color="#dadada"/>
+      <stop offset=".85" stop-color="#e8e8e8"/>
+      <stop offset="1" stop-color="#f4f4f4"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="610" cy="478" r="460" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff" stop-opacity="1"/>
+      <stop offset=".18" stop-color="#fff" stop-opacity=".7"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#b8b8b8"/>
+      <stop offset=".25" stop-color="#8a8a8a"/>
+      <stop offset=".6" stop-color="#3c3c3c"/>
+      <stop offset="1" stop-color="#0c0c0c"/>
+    </linearGradient>
+    <linearGradient id="streak" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity=".95"/>
+      <stop offset=".7" stop-color="#fff" stop-opacity=".25"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="b2"><feGaussianBlur stdDeviation="2"/></filter>
+    <filter id="b6"><feGaussianBlur stdDeviation="6"/></filter>
+    <filter id="b14"><feGaussianBlur stdDeviation="14"/></filter>
+    <filter id="haze"><feGaussianBlur stdDeviation="3"/></filter>
+    <filter id="grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="7"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="table" tableValues="0 .10"/></feComponentTransfer>
+    </filter>
+  </defs>
+
+  <!-- sky -->
+  <rect width="1000" height="560" fill="url(#sky)"/>
+  <rect width="1000" height="1000" fill="url(#glow)"/>
+  <!-- thin cloud bands -->
+  <g fill="#fff" opacity=".45" filter="url(#b14)">
+    <ellipse cx="220" cy="300" rx="260" ry="10"/>
+    <ellipse cx="820" cy="360" rx="240" ry="8"/>
+    <ellipse cx="420" cy="230" rx="180" ry="6"/>
+  </g>
+  <!-- sun -->
+  <circle cx="610" cy="478" r="70" fill="#fff" opacity=".9" filter="url(#b14)"/>
+  <circle cx="610" cy="478" r="40" fill="#fff" filter="url(#b2)"/>
+
+  <!-- far ambas (flat-topped highland mesas) -->
+  <path filter="url(#haze)" fill="#9a9a9a" d="M0 520 L40 512 L70 488 L150 484 L178 470 L300 468 L322 490 L390 494 L420 506 L470 508 L500 500 L610 498 L640 482 L760 478 L790 494 L880 496 L905 486 L1000 484 L1000 560 L0 560Z"/>
+  <!-- nearer ridge -->
+  <path filter="url(#b2)" fill="#5c5c5c" d="M0 548 L60 530 L120 534 L170 520 L230 524 L270 540 L340 546 L420 548 L520 552 L640 550 L700 540 L760 528 L820 530 L870 520 L940 522 L1000 516 L1000 566 L0 566Z"/>
+  <!-- shoreline trees -->
+  <g fill="#3a3a3a" filter="url(#b2)">
+    <rect x="0" y="550" width="1000" height="16"/>
+    <ellipse cx="90" cy="548" rx="40" ry="12"/><ellipse cx="180" cy="546" rx="26" ry="10"/>
+    <ellipse cx="760" cy="540" rx="50" ry="14"/><ellipse cx="870" cy="544" rx="36" ry="12"/>
+    <ellipse cx="960" cy="540" rx="44" ry="16"/>
+  </g>
+
+  <!-- water -->
+  <rect y="564" width="1000" height="436" fill="url(#water)"/>
+  <!-- sun reflection -->
+  <g filter="url(#b6)">
+    <rect x="572" y="566" width="76" height="380" fill="url(#streak)"/>
+  </g>
+  <g fill="#fff" opacity=".8" filter="url(#b2)" transform="translate(50 0)">
+    <rect x="500" y="590" width="120" height="3"/><rect x="520" y="612" width="90" height="3"/>
+    <rect x="490" y="640" width="140" height="4"/><rect x="530" y="672" width="70" height="3"/>
+    <rect x="505" y="704" width="110" height="4"/><rect x="540" y="742" width="56" height="3"/>
+    <rect x="515" y="790" width="96" height="4"/><rect x="545" y="842" width="50" height="3"/>
+  </g>
+  <!-- ripples -->
+  <g stroke="#fff" stroke-opacity=".18" stroke-width="2" filter="url(#b2)">
+    <path d="M60 620 H300 M680 610 H950 M120 680 H380 M700 700 H980 M40 760 H260 M720 790 H940"/>
+  </g>
+
+  <!-- low multi-arch stone bridge crossing the water -->
+  <g fill="#202020" filter="url(#b2)">
+    <path fill-rule="evenodd" d="M600 600 L1000 590 L1000 634 L600 634 Z M626 634 L626 621 A30 15 0 0 1 686 621 L686 634 Z M702 634 L702 621 A30 15 0 0 1 762 621 L762 634 Z M778 634 L778 621 A30 15 0 0 1 838 621 L838 634 Z M854 634 L854 621 A30 15 0 0 1 914 621 L914 634 Z M930 634 L930 621 A30 15 0 0 1 990 621 L990 634 Z"/>
+  </g>
+  <!-- bridge reflection -->
+  <g fill="#262626" opacity=".35" filter="url(#b6)">
+    <path d="M600 636 L1000 636 L1000 676 L600 662 Z"/>
+  </g>
+
+  <!-- tankwa with paddler -->
+  <g fill="#1c1c1c" filter="url(#b2)">
+    <path d="M300 735 Q360 748 440 736 Q430 750 372 752 Q318 750 300 735Z"/>
+    <ellipse cx="380" cy="720" rx="7" ry="17"/>
+    <circle cx="381" cy="697" r="7"/>
+    <path d="M372 712 L404 684 L407 687 L377 716Z"/>
+    <path d="M404 684 L420 760" stroke="#1c1c1c" stroke-width="3"/>
+  </g>
+  <g fill="#1c1c1c" opacity=".25" filter="url(#b6)"><ellipse cx="372" cy="762" rx="76" ry="7"/></g>
+  <!-- bottom vignette for legible caption -->
+  <linearGradient id="vig" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".55"/></linearGradient>
+  <rect y="700" width="1000" height="300" fill="url(#vig)"/>
+</svg>
+</body></html>
