@@ -33,10 +33,10 @@ robots.txt
 assets/
   css/styles.css           All styles (design tokens at the top)
   fonts/                   Libre Caslon Text, Space Mono, Inter (woff2) + OFL licences
-  images/                  Tile images (AVIF + WebP, 400/800px) and favicon.svg
+  images/favicon.svg
+  images/photos/           Original photos (JPEG) + optimised AVIF/WebP copies
 scripts/
-  grade_images.py          Colour-grades any photo into the palette and exports AVIF/WebP
-  scenes/*.html            Grayscale source scenes for the current tile images
+  optimize_images.py       Re-encodes a photo to AVIF/WebP without cropping or recolouring
 ```
 
 ## How the layout scales
@@ -49,27 +49,39 @@ from the reference hold at any width:
 
 The grid shows 3 columns, then 2 columns when the card is under 640px wide, then 1 column under 420px.
 
-## Replacing the images with real photography
+## Photos
 
-The current tile images are illustrated stand-ins, because no stock-photo source
-was reachable while building. To use real photos, run them through the same grade
-so they match the reference's duotone look:
+| Tile | Theme | File |
+| ---- | ----- | ---- |
+| Top middle | Ethiopia Going Digital | `assets/images/photos/ethiopia-going-digital.jpg` |
+| Bottom left | Ethiopian Digital Lifestyle | `assets/images/photos/ethiopian-digital-lifestyle.jpg` |
+| Bottom right | Technology Meets Nature | `assets/images/photos/technology-meets-nature.jpg` |
+
+The photos are used exactly as supplied. The square tile crop is done in CSS
+(`object-fit: cover` plus an `object-position` per photo in `styles.css`), and a merlot
+gradient overlay at the foot of each photo tile keeps captions legible.
+
+To swap or update a photo, replace the JPEG (keeping its name), then regenerate the web copies:
 
 ```bash
 pip install "pillow>=11"
-python scripts/grade_images.py path/to/photo.jpg assets/images/circuit ember
-python scripts/grade_images.py path/to/photo.jpg assets/images/workspace ember
-python scripts/grade_images.py path/to/photo.jpg assets/images/first-light daybreak
+python scripts/optimize_images.py assets/images/photos/technology-meets-nature.jpg 448 896
+python scripts/optimize_images.py assets/images/photos/ethiopian-digital-lifestyle.jpg 448 896
+python scripts/optimize_images.py assets/images/photos/ethiopia-going-digital.jpg 480
 ```
 
-File names stay the same, so no HTML changes are needed. Update the matching `alt`
-text in `index.html`.
+If a new photo has different pixel dimensions, update the `width`/`height`
+attributes on its `<img>` and the widths in its `srcset`s in `index.html`.
 
 ## Before going live
 
-- **Copy:** the taglines ("Ideas, then systems.", "Design. Build. Repeat.",
-  "Building bridges.", "Coffee & code") are placeholders that follow the reference's
-  structure. Replace them with approved company messaging.
+- **Copy:** the taglines ("Ethiopia, going digital.", "Design. Build. Repeat.",
+  "Technology meets nature.", "Coffee & code") are placeholders that follow the
+  reference's structure. Replace them with approved company messaging.
+- **Ethiopia Going Digital photo:** the supplied file is only 480 × 324 px, so it looks
+  soft on high-density screens. Use a version at least 800 px tall if you can. The
+  original also carries a photographer credit ("Firaol_Debela_lafto") that falls outside
+  the tile crop, so confirm you have the right to use it and credit it where required.
 - **Domain:** once the production URL is known, add `<link rel="canonical">`, `og:url`
   and an absolute `og:image` to `index.html`, and add a `sitemap.xml` (referenced from `robots.txt`).
 - **Handle:** `bridge.technologies` in the header bar is a stand-in for the reference's
