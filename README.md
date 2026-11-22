@@ -57,11 +57,13 @@ grid fills the rest of the viewport edge to edge, with no outer frame.
 
 | Tile | Theme | File |
 | ---- | ----- | ---- |
-| Top middle | Ethiopia Going Digital | `assets/images/photos/ethiopia-going-digital.jpg` |
+| Top middle | Ethiopia Going Digital | `assets/images/photos/ethiopia-going-digital-crop.jpg` (cropped from `ethiopia-going-digital.jpg`) |
 | Bottom left | Ethiopian Digital Lifestyle | `assets/images/photos/ethiopian-digital-lifestyle.jpg` |
 | Bottom right | Technology Meets Nature | `assets/images/photos/technology-meets-nature.jpg` |
 
-The photos are used exactly as supplied. The square tile crop is done in CSS
+The lifestyle and nature photos are used exactly as supplied. The Addis Ababa photo
+is cropped to 370 × 324 to drop the corner watermark; the original stays in the repo
+and the photographer is credited on the page ("Photo · Firaol Debela Lafto"). The square tile crop is done in CSS
 (`object-fit: cover` plus an `object-position` per photo in `styles.css`), and a merlot
 gradient overlay at the foot of each photo tile keeps captions legible.
 
@@ -71,7 +73,7 @@ To swap or update a photo, replace the JPEG (keeping its name), then regenerate 
 pip install "pillow>=11"
 python scripts/optimize_images.py assets/images/photos/technology-meets-nature.jpg 448 640 896
 python scripts/optimize_images.py assets/images/photos/ethiopian-digital-lifestyle.jpg 448 640 896
-python scripts/optimize_images.py assets/images/photos/ethiopia-going-digital.jpg 480
+python scripts/optimize_images.py assets/images/photos/ethiopia-going-digital-crop.jpg 370
 ```
 
 If a new photo has different pixel dimensions, update the `width`/`height`
@@ -83,11 +85,8 @@ attributes on its `<img>` and the widths in its `srcset`s in `index.html`.
   "Technology meets nature.", "Coffee & code") are placeholders that follow the
   reference's structure. Replace them with approved company messaging.
 - **Ethiopia Going Digital photo:** the supplied file is only 480 × 324 px, so it looks
-  soft on high-density screens. Use a version at least 800 px tall if you can. The
-  original also carries a photographer credit ("Firaol_Debela_lafto") that falls outside
-  the tile crop, so confirm you have the right to use it and credit it where required.
-- **Domain:** once the production URL is known, add `<link rel="canonical">`, `og:url`
-  and an absolute `og:image` to `index.html`, and add a `sitemap.xml` (referenced from `robots.txt`).
+  soft on large and high-density screens. Ask the photographer (Firaol Debela Lafto)
+  for permission and a higher-resolution original, and keep the on-page credit.
 - **Handle:** `bridge.technologies` in the header bar is a stand-in for the reference's
   social handle. Replace it with the real one.
 
