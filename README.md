@@ -65,8 +65,8 @@ To swap or update a photo, replace the JPEG (keeping its name), then regenerate 
 
 ```bash
 pip install "pillow>=11"
-python scripts/optimize_images.py assets/images/photos/technology-meets-nature.jpg 448 896
-python scripts/optimize_images.py assets/images/photos/ethiopian-digital-lifestyle.jpg 448 896
+python scripts/optimize_images.py assets/images/photos/technology-meets-nature.jpg 448 640 896
+python scripts/optimize_images.py assets/images/photos/ethiopian-digital-lifestyle.jpg 448 640 896
 python scripts/optimize_images.py assets/images/photos/ethiopia-going-digital.jpg 480
 ```
 
