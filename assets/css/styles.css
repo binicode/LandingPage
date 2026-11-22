@@ -261,6 +261,22 @@ em {
   object-fit: cover;
 }
 
+/* Merlot shade at the foot of each photo, as in the reference, so captions stay legible.
+   Applied as an overlay; the image files are untouched. */
+.tile__figure::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgb(42 9 9 / 0) 42%,
+    rgb(42 9 9 / 0.45) 64%,
+    rgb(42 9 9 / 0.82) 86%,
+    rgb(42 9 9 / 0.9) 100%
+  );
+}
+
 /* Crop focus for each provided photo (the files themselves are uncropped) */
 .tile__img--digital {
   object-position: 35% 50%;   /* centre the domed ring building */
